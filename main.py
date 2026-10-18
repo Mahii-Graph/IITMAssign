@@ -202,7 +202,9 @@ def answer_question(q):
         if not groups:
             return "No matching orders found."
         p, v = max(groups.items(), key=lambda x: x[1])
-        return f"{p} has the highest {kind} value: {format_money(convert_from_usd(v, cur), cur)}."
+        if re.search(r"\b(how much|what amount|revenue value|total value)\b", low):
+            return f"{p}: {format_money(convert_from_usd(v, cur), cur)}"
+        return p
 
     # Customer-focused questions.
     if "customer" in low or re.search(r"\bC\d+\b", q, re.I):

@@ -190,7 +190,7 @@ def answer_question(q):
 
     # Count-style questions.
     if re.search(r"\b(how many|number of|count|quantity of orders|orders count)\b", low):
-        return f"{len(rows)} {kind} orders."
+    return len(rows)
 
     # Ranking / best-selling product questions.
     if ("top product" in low or "best-selling" in low or "bestselling" in low or
